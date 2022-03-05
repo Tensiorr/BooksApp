@@ -1,0 +1,92 @@
+{% extends 'books/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div>
+    <form action="/books/" method="GET">
+        <input type="text" value="" name="text_google_api"/>
+        <input type="submit" class="btn" value="Search in Google Api">
+    </form>
+</div>
+
+<div>
+    <form action="/books/" method="get">
+        <input type="text" value="" name="search_textbox"/>
+        <select name="option">
+            <option id="searchtitle" value="title">Title</option>
+            <option id="searchauthor" value="author">Author</option>
+            <option id="searchlanguage" value="language">Language</option>
+        </select>
+        <input type="submit" class="btn" value="Search in database">
+    </form>
+</div>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">Title</th>
+        <th scope="col">Author</th>
+        <th scope="col">Publication date</th>
+        <th scope="col">ISBN</th>
+        <th scope="col">Pages</th>
+        <th scope="col">Cover</th>
+        <th scope="col">Language</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for book in books %}
+    <tr>
+        <td>
+            {% if search == True %}
+                {{ book.title }}
+            {% else %}
+                <a href="{% url 'books:edit' book.id %}">{{ book.title }}</a></td>
+            {% endif %}
+        <td>
+            {% if book.author == None %}
+                Author not found</td>
+            {% else %}
+                {{ book.author }}</td>
+            {% endif %}
+
+        <td>
+            {% if book.publication_date == None %}
+                Publication date not found</td>
+            {% else %}
+                {{ book.publication_date }}</td>
+            {% endif %}
+
+        <td>
+            {% if book.isbn == None %}
+                Isbn not found</td>
+            {% else %}
+                {{ book.isbn }}</td>
+            {% endif %}
+
+        <td>
+            {% if book.pages == None %}
+                Page count not found</td>
+            {% else %}
+                {{ book.pages }}</td>
+            {% endif %}
+
+        <td>
+            {% if book.cover == None %}
+                Cover not found</td>
+            {% else %}
+                <img src = {{ book.cover }}/></td>
+            {% endif %}
+
+        <td>
+            {% if book.language == None %}
+                Language not found</td>
+            {% else %}
+                {{ book.language }}</td>
+            {% endif %}
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
