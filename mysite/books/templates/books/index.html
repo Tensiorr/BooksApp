@@ -12,12 +12,14 @@
 
 <div>
     <form action="/books/" method="get">
-        <input type="text" value="" name="search_textbox"/>
-        <select name="option">
+        <input type="text" class="form-select" value="" name="search_textbox"/>
+        <select class="form-select" name="option">
             <option id="searchtitle" value="title">Title</option>
             <option id="searchauthor" value="author">Author</option>
             <option id="searchlanguage" value="language">Language</option>
         </select>
+        From: <input type="date" id="fromdate" name="datestart">
+        To: <input type="date" id="todate" name="dateend">
         <input type="submit" class="btn" value="Search in database">
     </form>
 </div>
@@ -72,14 +74,14 @@
             {% endif %}
 
         <td>
-            {% if book.cover == None %}
+            {% if book.cover == None or book.cover == ""  %}
                 Cover not found</td>
             {% else %}
                 <img src = {{ book.cover }}/></td>
             {% endif %}
 
         <td>
-            {% if book.language == None %}
+            {% if book.language == None or book.language == "" %}
                 Language not found</td>
             {% else %}
                 {{ book.language }}</td>
