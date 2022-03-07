@@ -1,92 +1,22 @@
 {% extends 'books/base.html' %}
-
 {% load crispy_forms_tags %}
 
 {% block content %}
 
 <form class="form-horizontal" method="post">
-    {% csrf_token %}
-<!--<fieldset>-->
-
-<!-- Form Name -->
-<legend>Edit</legend>
-
-<!-- Text input-->
-<!--<div class="form-group">-->
-<!--  <label class="col-md-4 control-label" for="Title">Title</label>-->
-<!--  <div class="col-md-4">-->
-<!--  <input id="Title" name="Title" type="text" placeholder="Title" class="form-control input-md" value= "{{book.title}}" required="">-->
-
-<!--  </div>-->
-<!--</div>-->
-
-<!--&lt;!&ndash; Text input&ndash;&gt;-->
-<!--<div class="form-group">-->
-<!--  <label class="col-md-4 control-label" for="Author">Author</label>-->
-<!--  <div class="col-md-4">-->
-<!--  <input id="Author" name="Author" type="text" placeholder="Author" class="form-control input-md" value= "{{book.author}}" required="">-->
-
-<!--  </div>-->
-<!--</div>-->
-
-<!--&lt;!&ndash; Text input&ndash;&gt;-->
-<!--<div class="form-group">-->
-<!--  <label class="col-md-4 control-label" for="Publication_date">Publication date</label>-->
-<!--  <div class="col-md-4">-->
-<!--  <input id="Publication_date" name="Publication_date" type="text" placeholder="Publication date" class="form-control input-md" value= "{{book.publication_date}}" required="">-->
-
-<!--  </div>-->
-<!--</div>-->
-
-<!--&lt;!&ndash; Text input&ndash;&gt;-->
-<!--<div class="form-group">-->
-<!--  <label class="col-md-4 control-label" for="ISBN">ISBN</label>-->
-<!--  <div class="col-md-4">-->
-<!--  <input id="ISBN" name="ISBN" type="text" placeholder="ISBN" class="form-control input-md" value= "{{book.isbn}}" required="">-->
-
-<!--  </div>-->
-<!--</div>-->
-
-<!--&lt;!&ndash; Text input&ndash;&gt;-->
-<!--<div class="form-group">-->
-<!--  <label class="col-md-4 control-label" for="Pages">Pages</label>-->
-<!--  <div class="col-md-4">-->
-<!--  <input id="Pages" name="Pages" type="text" placeholder="Pages" class="form-control input-md" value= "{{book.pages}}" required="">-->
-
-<!--  </div>-->
-<!--</div>-->
-
-<!--&lt;!&ndash; Text input&ndash;&gt;-->
-<!--<div class="form-group">-->
-<!--  <label class="col-md-4 control-label" for="Cover">Cover</label>-->
-<!--  <div class="col-md-4">-->
-<!--  <input id="Cover" name="Cover" type="text" placeholder="Cover" class="form-control input-md" value= "{{book.cover}}" required="">-->
-
-<!--  </div>-->
-<!--</div>-->
-
-<!--&lt;!&ndash; Text input&ndash;&gt;-->
-<!--<div class="form-group">-->
-<!--  <label class="col-md-4 control-label" for="Language">Language</label>-->
-<!--  <div class="col-md-4">-->
-<!--  <input id="Language" name="Language" type="text" placeholder="Language" class="form-control input-md" value= "{{book.language}}" required="">-->
-
-<!--  </div>-->
-<!--</div>-->
-<div class="form-group">
-  <div class="col-md-4">
-  {{ form.as_p }}
+  {% csrf_token %}
+  <legend>Edit</legend>
+  <div class="form-group">
+    {{ form }}
+    {% if text %}
+    </br>{{ text }}
+    {% endif %}
   </div>
-</div>
-<!-- Button -->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="singlebutton"></label>
-  <div class="col-md-4">
-    <button type = "submit" id="save" name="save" class="btn btn-primary" >Save</button>
-  </div>
-</div>
 
-<h2>{{ text }}</h2>
+  <button class="btn btn-primary" >
+    Save
+  </button>
+
 </form>
 
 {% endblock %}
